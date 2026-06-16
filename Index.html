@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ayesha Ali – CS Graduate, Flutter Developer & Graphic Designer." />
+  <title>Ayesha Ali — Developer & Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --rose:     #F43F5E;
+      --rose-soft:#FFF1F4;
+      --violet:   #8B5CF6;
+      --violet-soft:#F5F0FF;
+      --blush:    #FDF2F8;
+      --cream:    #FAFAFA;
+      --white:    #FFFFFF;
+      --ink:      #1E1B2E;
+      --muted:    #64627A;
+      --line:     rgba(139,92,246,0.12);
+      --r:        18px;
+      --display:  'Playfair Display', serif;
+      --body:     'Inter', sans-serif;
+      --mono:     'DM Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--blush); }
+    ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 99px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(253,242,248,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+      color: var(--muted); transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--violet); }
+    .nav-cta {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+      padding: 0.5rem 1.3rem;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      color: white; border-radius: 40px;
+      transition: opacity .2s, transform .2s;
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hamburger {
+      display: none; cursor: pointer; background: none; border: none;
+      flex-direction: column; gap: 5px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--white); border-bottom: 1px solid var(--line);
+      flex-direction: column; padding: 1.5rem 2rem; gap: 1.1rem;
+      z-index: 199;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--mono); font-size: 0.9rem; color: var(--muted); }
+    .mobile-menu a:hover { color: var(--violet); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 100px 5vw 60px;
+      position: relative;
+    }
+    #home::before {
+      content: '';
+      position: fixed; top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(243,63,94,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none; z-index: 0;
+    }
+    #home::after {
+      content: '';
+      position: fixed; bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.78rem; font-weight: 500;
+      color: var(--rose); letter-spacing: 0.06em;
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--violet));
+      border-radius: 2px;
+    }
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .hero-name .grad {
+      background: linear-gradient(135deg, var(--rose) 30%, var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-role {
+      font-family: var(--mono); font-size: 0.82rem;
+      color: var(--muted); margin-bottom: 1.5rem;
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .role-pill {
+      background: var(--violet-soft); color: var(--violet);
+      padding: 0.2rem 0.8rem; border-radius: 40px;
+      font-size: 0.75rem; font-weight: 500;
+    }
+    .role-pill.rose { background: var(--rose-soft); color: var(--rose); }
+    .hero-desc { font-size: 0.97rem; color: var(--muted); max-width: 480px; margin-bottom: 2rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-grad {
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 500;
+      padding: 0.75rem 1.8rem;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      color: white; border-radius: 40px;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-grad:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-ghost {
+      font-family: var(--mono); font-size: 0.82rem;
+      padding: 0.75rem 1.8rem;
+      border: 1.5px solid rgba(139,92,246,0.3);
+      color: var(--violet); border-radius: 40px;
+      transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: var(--violet); background: var(--violet-soft); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3rem;
+      padding-top: 2rem; border-top: 1px solid var(--line);
+    }
+    .stat-num {
+      font-family: var(--display); font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── AVATAR ── */
+    .hero-right { display: flex; justify-content: flex-end; align-items: center; position: relative; z-index: 1; }
+    .avatar-wrap { position: relative; width: 300px; height: 300px; }
+    .avatar-glow {
+      position: absolute; inset: -16px;
+      background: conic-gradient(from 0deg, var(--rose), var(--violet), var(--rose));
+      border-radius: 50%; opacity: 0.25;
+      animation: spin 12s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar-circle {
+      position: relative; z-index: 1;
+      width: 300px; height: 300px; border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--rose-soft), var(--violet-soft));
+      border: 4px solid white;
+      box-shadow: 0 24px 48px -12px rgba(139,92,246,0.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-placeholder {
+      font-size: 6rem; color: rgba(139,92,246,0.3);
+    }
+    .avatar-circle img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .fbadge {
+      position: absolute; z-index: 2;
+      background: white; border-radius: 40px;
+      padding: 0.45rem 1rem; font-family: var(--mono); font-size: 0.7rem;
+      color: var(--muted); box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      display: flex; align-items: center; gap: 0.4rem;
+      animation: float 3s ease-in-out infinite; white-space: nowrap;
+    }
+    .fbadge i { font-size: 0.8rem; }
+    .fbadge.b1 { top: -10px; left: -10px; animation-delay: 0s; }
+    .fbadge.b1 i { color: #02B2DA; }
+    .fbadge.b2 { bottom: 40px; right: -40px; animation-delay: 0.7s; }
+    .fbadge.b2 i { color: var(--violet); }
+    .fbadge.b3 { bottom: -10px; left: 10px; animation-delay: 1.4s; }
+    .fbadge.b3 i { color: var(--rose); }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ── SECTION SHELL ── */
+    section { position: relative; }
+    .section-inner { max-width: 1120px; margin: 0 auto; padding: 80px 5vw; }
+    .s-label {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      color: var(--rose); letter-spacing: 0.1em;
+      display: flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .s-label::before {
+      content: ''; display: inline-block;
+      width: 20px; height: 2px;
+      background: linear-gradient(90deg, var(--rose), var(--violet));
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800; line-height: 1.2;
+      letter-spacing: -0.01em; color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--violet); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      padding: 0.3rem 0.9rem; border-radius: 40px;
+      background: var(--violet-soft); color: var(--violet);
+      border: 1px solid rgba(139,92,246,0.18);
+    }
+    .tag.rose { background: var(--rose-soft); color: var(--rose); border-color: rgba(244,63,94,0.18); }
+    .info-stack { display: grid; gap: 0.85rem; }
+    .icard {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--cream); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1rem 1.2rem;
+      transition: border-color .2s;
+    }
+    .icard:hover { border-color: var(--violet); }
+    .icard-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--violet-soft); color: var(--violet);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .icard-icon.rose { background: var(--rose-soft); color: var(--rose); }
+    .icard-label { font-size: 0.68rem; text-transform: uppercase; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; }
+    .icard-val { font-size: 0.88rem; font-weight: 500; }
+    .icard-val a:hover { color: var(--violet); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--blush); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.4rem;
+    }
+    .scard {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1.5rem;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .scard:hover { transform: translateY(-3px); border-color: var(--violet); box-shadow: 0 12px 24px -10px rgba(139,92,246,0.12); }
+    .scard-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.2rem; }
+    .scard-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .scard-icon.v { background: var(--violet-soft); color: var(--violet); }
+    .scard-icon.r { background: var(--rose-soft); color: var(--rose); }
+    .scard-icon.g { background: #ECFDF5; color: #10b981; }
+    .scard-title { font-family: var(--display); font-size: 1rem; font-weight: 700; }
+    .stags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .stag {
+      font-family: var(--mono); font-size: 0.7rem;
+      padding: 0.2rem 0.7rem; border-radius: 40px;
+      background: var(--cream); color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+    .exp-card {
+      background: var(--cream); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 2rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
+      align-items: start; max-width: 800px;
+    }
+    .exp-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--rose-soft), var(--violet-soft));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--violet); flex-shrink: 0;
+    }
+    .exp-role { font-family: var(--display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .exp-place { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.8rem; }
+    .exp-date {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+      color: var(--rose); background: var(--rose-soft);
+      padding: 0.2rem 0.8rem; border-radius: 40px; margin-bottom: 1rem;
+    }
+    .exp-list { list-style: none; }
+    .exp-list li {
+      font-size: 0.87rem; color: var(--muted);
+      padding-left: 1.2rem; margin-bottom: 0.4rem; position: relative;
+    }
+    .exp-list li::before { content: '◆'; position: absolute; left: 0; color: var(--violet); font-size: 0.55rem; top: 0.35em; }
+
+    /* ── FYP SECTION (unified) ── */
+    #fyp {
+      background: var(--blush);
+    }
+    .fyp-container {
+      background: var(--white);
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      box-shadow: 0 20px 48px -12px rgba(139,92,246,0.1);
+    }
+    .fyp-header {
+      padding: 2.5rem 2.5rem 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .fyp-badge {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      letter-spacing: 0.04em;
+      display: inline-block;
+      margin-bottom: 0.8rem;
+    }
+    .fyp-name {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .fyp-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 680px;
+    }
+    .fyp-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .fyp-desc {
+      padding: 2rem 2.5rem;
+      border-right: 1px solid var(--line);
+    }
+    .fyp-desc h4 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+    .fyp-feature-list {
+      list-style: none;
+    }
+    .fyp-feature-list li {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .fyp-feature-list li .fi {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--violet-soft);
+      color: var(--violet);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+    .fyp-tech {
+      padding: 2rem 2.5rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--line);
+    }
+    .tech-item i {
+      color: var(--violet);
+      width: 18px;
+      text-align: center;
+    }
+    .tech-item-name {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .tech-item-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .fyp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem 2rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── SCREENSHOTS (inside fyp) ── */
+    .fyp-screenshots {
+      padding: 0 2.5rem 2.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .fyp-screenshots h4 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.2rem;
+    }
+    .screenshot-card {
+      background: var(--cream);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .screenshot-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(139,92,246,0.12);
+      border-color: var(--violet);
+    }
+    .screenshot-card img {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      background: var(--violet-soft);
+    }
+    .screenshot-card .caption {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--ink);
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    /* ── DESIGN PORTFOLIO ── */
+    #design { background: var(--white); }
+    .design-intro { font-size: 0.95rem; color: var(--muted); max-width: 600px; margin-bottom: 2.5rem; }
+    .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .ftab {
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 500;
+      padding: 0.4rem 1.1rem; border-radius: 40px; cursor: pointer;
+      border: 1.5px solid var(--line); background: var(--cream);
+      color: var(--muted); transition: all .2s;
+    }
+    .ftab.active, .ftab:hover {
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      color: white; border-color: transparent;
+    }
+    .design-gallery {
+      columns: 3; column-gap: 1.2rem;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 1.2rem;
+      border-radius: 14px; overflow: hidden;
+      position: relative; cursor: pointer;
+      border: 1px solid var(--line);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 32px -8px rgba(139,92,246,0.2); }
+    .gallery-item img { width: 100%; display: block; transition: transform .35s; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(30,27,46,0.7) 0%, transparent 60%);
+      opacity: 0; transition: opacity .25s;
+      display: flex; align-items: flex-end; padding: 1rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-label { font-family: var(--mono); font-size: 0.72rem; color: white; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(30,27,46,0.92); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lb-inner { position: relative; max-width: 90vw; max-height: 90vh; }
+    .lb-inner img { max-width: 90vw; max-height: 85vh; border-radius: 14px; object-fit: contain; }
+    .lb-close {
+      position: absolute; top: -40px; right: 0;
+      background: none; border: none; color: white;
+      font-size: 1.5rem; cursor: pointer; opacity: 0.7;
+    }
+    .lb-close:hover { opacity: 1; }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--blush); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.3rem; }
+    .edu-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1.5rem 1.8rem;
+      display: flex; align-items: flex-start; gap: 1.1rem;
+    }
+    .edu-icon {
+      width: 50px; height: 50px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .edu-icon.deg { background: var(--violet-soft); color: var(--violet); }
+    .edu-icon.cert { background: var(--rose-soft); color: var(--rose); }
+    .edu-title { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .edu-org { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .edu-years {
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+      color: var(--violet); background: var(--violet-soft);
+      padding: 0.2rem 0.7rem; border-radius: 40px;
+      display: inline-block;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
+    .contact-cards { display: flex; flex-direction: column; gap: 0.9rem; }
+    .ccard {
+      background: var(--cream); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1rem 1.3rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color .2s;
+    }
+    .ccard:hover { border-color: var(--violet); }
+    .ccard-icon {
+      width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ccard-icon.v { background: var(--violet-soft); color: var(--violet); }
+    .ccard-icon.r { background: var(--rose-soft); color: var(--rose); }
+    .ccard-label { font-size: 0.68rem; text-transform: uppercase; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; }
+    .ccard-val { font-size: 0.87rem; font-weight: 500; }
+    .ccard-val a:hover { color: var(--violet); }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .fg label { font-family: var(--mono); font-size: 0.68rem; font-weight: 600; color: var(--muted); letter-spacing: 0.05em; display: block; margin-bottom: 0.4rem; }
+    .fg input, .fg textarea {
+      width: 100%; background: var(--cream); border: 1.5px solid var(--line);
+      border-radius: 12px; padding: 0.75rem 1rem;
+      font-family: var(--body); font-size: 0.9rem;
+      color: var(--ink); outline: none; transition: border-color .2s;
+    }
+    .fg input:focus, .fg textarea:focus { border-color: var(--violet); }
+    .btn-submit {
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 500;
+      padding: 0.75rem 1.8rem; border-radius: 40px; border: none;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      color: white; cursor: pointer; align-self: flex-start;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,0.7);
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 2.5rem 5vw;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: var(--display); font-style: italic; font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--rose), var(--violet));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .footer-copy { font-size: 0.78rem; }
+    .socials { display: flex; gap: 0.7rem; }
+    .socials a {
+      width: 36px; height: 36px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 0.9rem;
+      transition: all .2s;
+    }
+    .socials a:hover { border-color: var(--violet); color: var(--violet); }
+
+    /* ── FADE IN ── */
+    .fi-anim { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
+    .fi-anim.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      #home {
+        display: flex; flex-direction: column;
+        padding-top: 96px; text-align: center;
+      }
+      .hero-right { order: -1; justify-content: center; }
+      .hero-left { max-width: 100%; }
+      .hero-eyebrow { justify-content: center; }
+      .hero-btns, .hero-stats { justify-content: center; }
+      .hero-desc { margin: 0 auto 2rem; }
+      .avatar-wrap, .avatar-circle { width: 220px; height: 220px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .fyp-body { grid-template-columns: 1fr; }
+      .fyp-desc { border-right: none; border-bottom: 1px solid var(--line); }
+      .design-gallery { columns: 2; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .screenshot-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .design-gallery { columns: 1; }
+      .hero-stats { gap: 1.5rem; }
+      .fyp-header { padding: 1.5rem 1.5rem 1rem; }
+      .fyp-desc, .fyp-tech { padding: 1.5rem; }
+      .fyp-tags { margin: 0 1.5rem 1.5rem; padding: 1rem 0; }
+      .fyp-screenshots { padding: 0 1.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Ayesha Ali</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#fyp">Tech Projects</a></li>
+      <li><a href="#design">Design</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:ayesha@example.com">Hire Me</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#fyp" onclick="closeMenu()">Tech Projects</a>
+  <a href="#design" onclick="closeMenu()">Designs</a>
+  <a href="#education" onclick="closeMenu()">Education</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-left">
+    <!-- <div class="hero-eyebrow">CS Graduate & Creative Professional</div> -->
+    <h1 class="hero-name">Ayesha<br><span class="grad">Ali</span></h1>
+    <div class="hero-role">
+      <span class="role-pill">Flutter Developer</span>
+      <span class="role-pill rose">Graphic Designer</span>
+      <!-- <span class="role-pill">Firebase</span> -->
+    </div>
+    <p class="hero-desc">A passionate Computer Science graduate who builds elegant mobile apps and crafts visually compelling designs, combining logic with creativity.</p>
+    <div class="hero-btns">
+      <a class="btn-grad" href="#fyp">View Tech Projects</a>
+      <a class="btn-ghost" href="#contact">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">BS'26</div><div class="stat-label">CS Graduate</div></div>
+      <div><div class="stat-num">1</div><div class="stat-label">Tech Projects Delivered</div></div>
+      <div><div class="stat-num">1+</div><div class="stat-label">Years Designing</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <div class="avatar-circle">
+        <img src="images/avatar/profile.jpg" alt="Ayesha Ali" />
+      </div>
+      <div class="fbadge b1"><i class="fab fa-flutter"></i> Flutter</div>
+      <div class="fbadge b2"><i class="fas fa-fire"></i> Firebase</div>
+      <div class="fbadge b3"><i class="fas fa-palette"></i> Design</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">About Me</div> -->
+    <h2 class="section-title fi-anim">Who I <em>Am</em></h2>
+    <div class="about-grid">
+      <div class="about-text fi-anim">
+        <p>I'm a Computer Science graduate with a dual passion for mobile development and visual design. My Final Year Project — a Flutter-based Weather & Events Alert app — brought together real-time APIs, cloud databases, and push notifications into a seamless user experience.</p>
+        <p>Beyond code, I've built a creative side through graphic design: brand identities, social media content, and digital illustrations that tell stories through visuals.</p>
+        <p>I believe the best digital products are those where thoughtful engineering and beautiful design come together — and that's exactly what I aim to create.</p>
+        <div class="tag-cloud">
+          <span class="tag">Flutter</span><span class="tag">Dart</span>
+          <span class="tag">Firebase</span><span class="tag">Firestore</span>
+          <span class="tag rose">Adobe Illustrator</span><span class="tag rose">Figma</span>
+          <span class="tag rose">Canva</span><span class="tag">REST APIs</span>
+          <span class="tag">UI/UX</span><span class="tag rose">Brand Identity</span>
+        </div>
+      </div>
+      <div class="info-stack fi-anim">
+        <div class="icard"><div class="icard-icon"><i class="fas fa-user"></i></div><div><div class="icard-label">Full Name</div><div class="icard-val">Ayesha Ali</div></div></div>
+        <div class="icard"><div class="icard-icon rose"><i class="fas fa-envelope"></i></div><div><div class="icard-label">Email</div><div class="icard-val"><a href="mailto:ayesha@example.com">ayesha@example.com</a></div></div></div>
+        <!-- <div class="icard"><div class="icard-icon"><i class="fas fa-phone"></i></div><div><div class="icard-label">Phone</div><div class="icard-val"><a href="tel:+92XXXXXXXXXX">+92 XXX XXXXXXX</a></div></div></div> -->
+        <div class="icard"><div class="icard-icon rose"><i class="fas fa-map-marker-alt"></i></div><div><div class="icard-label">Location</div><div class="icard-val">Talash Disttrict Dir lower, KP, Pakistan</div></div></div>
+        <!-- <div class="icard"><div class="icard-icon"><i class="fab fa-linkedin"></i></div><div><div class="icard-label">LinkedIn</div><div class="icard-val"><a href="#" target="_blank">linkedin.com/in/ayesha-ali</a></div></div></div> -->
+        <div class="icard"><div class="icard-icon rose"><i class="fas fa-graduation-cap"></i></div><div><div class="icard-label">Degree</div><div class="icard-val">BS Computer Science '26</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Technical & Creative</div> -->
+    <h2 class="section-title fi-anim">What I Work <em>With</em></h2>
+    <div class="skills-grid">
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon v"><i class="fas fa-mobile-alt"></i></div><div class="scard-title">Mobile Development</div></div><div class="stags"><span class="stag">Flutter</span><span class="stag">Dart</span><span class="stag">Widgets</span><span class="stag">Provider</span><span class="stag">GetX</span><span class="stag">Responsive UI</span></div></div>
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon r"><i class="fas fa-fire"></i></div><div class="scard-title">Backend & Cloud</div></div><div class="stags"><span class="stag">Firebase Auth</span><span class="stag">Firestore</span><span class="stag">Storage</span><span class="stag">Cloud Messaging</span><span class="stag">OneSignal</span><span class="stag">REST APIs</span></div></div>
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon g"><i class="fas fa-palette"></i></div><div class="scard-title">Graphic Design</div></div><div class="stags"><span class="stag">Adobe Illustrator</span><span class="stag">Photoshop</span><span class="stag">Figma</span><span class="stag">Canva</span><span class="stag">Logo Design</span><span class="stag">Brand Identity</span></div></div>
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon v"><i class="fas fa-code"></i></div><div class="scard-title">Programming</div></div><div class="stags"><span class="stag">Dart</span><span class="stag">Python</span><span class="stag">C++</span><span class="stag">HTML/CSS</span><span class="stag">JavaScript</span><span class="stag">SQL</span></div></div>
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon r"><i class="fas fa-pencil-ruler"></i></div><div class="scard-title">UI/UX Design</div></div><div class="stags"><span class="stag">Wireframing</span><span class="stag">Prototyping</span><span class="stag">User Research</span><span class="stag">Design Systems</span><span class="stag">Material Design</span></div></div>
+      <div class="scard fi-anim"><div class="scard-head"><div class="scard-icon g"><i class="fas fa-tools"></i></div><div class="scard-title">Tools & Platforms</div></div><div class="stags"><span class="stag">VS Code</span><span class="stag">Android Studio</span><span class="stag">Git/GitHub</span><span class="stag">Postman</span><span class="stag">Notion</span><span class="stag">Firebase Console</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Experience</div> -->
+    <h2 class="section-title fi-anim">My <em>Journey</em></h2>
+    <div class="exp-card fi-anim">
+      <div class="exp-icon"><i class="fas fa-paint-brush"></i></div>
+      <div>
+        <div class="exp-role">Graphic Designer</div>
+        <div class="exp-place">Dare Arqam School Talash Campus · Remote</div>
+        <div class="exp-date"><i class="fas fa-circle" style="font-size:0.5rem"></i> 2022 – Present</div>
+        <ul class="exp-list">
+          <li>Designed logos, brand identities, and visual assets for school events and departments.</li>
+          <li>Created social media content, banners, and marketing materials for school campaigns.</li>
+          <li>Produced digital illustrations, infographics, and educational visuals for academic use.</li>
+          <li>Collaborated with faculty and staff to maintain brand consistency across all school materials.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FYP (UNIFIED) ── -->
+<section id="fyp">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Final Year Project</div> -->
+    <h2 class="section-title fi-anim">Technical <em>Work</em></h2>
+    <div class="fyp-container fi-anim">
+      <!-- Header -->
+      <div class="fyp-header">
+        <span class="fyp-badge">✦ FINAL YEAR PROJECT · 2025–2026</span>
+        <div class="fyp-name">Weather & Events Alert App</div>
+        <p class="fyp-sub">A Flutter mobile application providing hyper-local weather updates for villages and cities, combined with a personal event reminder system — making it a complete daily planning companion.</p>
+      </div>
+
+      <!-- Body: Features + Tech -->
+      <div class="fyp-body">
+        <div class="fyp-desc">
+          <h4>Core Features</h4>
+          <ul class="fyp-feature-list">
+            <li><div class="fi"><i class="fas fa-cloud-sun"></i></div><div><strong>Weather Module</strong> — Real-time local weather by city/village with 7-day forecast, temperature, humidity, wind, and extreme weather alerts.</div></li>
+            <li><div class="fi"><i class="fas fa-bell"></i></div><div><strong>Event Module</strong> — Create, edit, and delete personal reminders with push notification alerts delivered via OneSignal.</div></li>
+            <li><div class="fi"><i class="fas fa-user-circle"></i></div><div><strong>User Module</strong> — Secure login/signup with Firebase Authentication, profile management, and personalized data per user.</div></li>
+            <li><div class="fi"><i class="fas fa-map-marker-alt"></i></div><div><strong>Hyper-local Focus</strong> — Searchable dropdown for villages/cities including rural areas underserved by major weather platforms.</div></li>
+          </ul>
+        </div>
+        <div class="fyp-tech">
+          <h4 style="font-family:var(--display);font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--ink)">Tech Stack</h4>
+          <div class="tech-stack">
+            <div class="tech-item"><i class="fab fa-flutter" style="color:#02B2DA"></i><div><div class="tech-item-name">Flutter & Dart</div><div class="tech-item-desc">Cross-platform UI framework</div></div></div>
+            <div class="tech-item"><i class="fas fa-fire" style="color:#FFA000"></i><div><div class="tech-item-name">Firebase Auth + Firestore</div><div class="tech-item-desc">Authentication & cloud database</div></div></div>
+            <div class="tech-item"><i class="fas fa-bell" style="color:var(--rose)"></i><div><div class="tech-item-name">OneSignal</div><div class="tech-item-desc">Push notifications service</div></div></div>
+            <div class="tech-item"><i class="fas fa-cloud" style="color:var(--violet)"></i><div><div class="tech-item-name">WeatherAPI.com</div><div class="tech-item-desc">Real-time weather data</div></div></div>
+            <div class="tech-item"><i class="fas fa-map" style="color:#10b981"></i><div><div class="tech-item-name">Open-Meteo Geocoding</div><div class="tech-item-desc">Location & geocoding API</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="fyp-tags">
+        <span class="tag">Flutter</span><span class="tag">Firebase</span>
+        <span class="tag">Firestore</span><span class="tag">OneSignal</span>
+        <span class="tag rose">WeatherAPI</span><span class="tag rose">Geocoding API</span>
+        <span class="tag">Dart</span><span class="tag">Push Notifications</span>
+        <span class="tag rose">Mobile App</span>
+      </div>
+
+      <!-- Screenshots -->
+      <div class="fyp-screenshots">
+        <h4> App Screenshots</h4>
+        <div class="screenshot-grid">
+          <!-- Replace src with your actual image URLs --> 
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/8B5CF6/FFFFFF?text=Home" alt="Home" /><div class="caption">Home</div></div>
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/F43F5E/FFFFFF?text=Weather" alt="Weather" /><div class="caption">Weather</div></div>
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/10B981/FFFFFF?text=Events" alt="Events" /><div class="caption">Events</div></div>
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/F59E0B/FFFFFF?text=Add+Event" alt="Add Event" /><div class="caption">Add Event</div></div>
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/3B82F6/FFFFFF?text=Notifications" alt="Notifications" /><div class="caption">Notifications</div></div>
+          <div class="screenshot-card"><img src="https://placehold.co/200x356/8B5CF6/FFFFFF?text=Profile" alt="Profile" /><div class="caption">Profile</div></div>
+        <!-- </div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-family:var(--mono);">Replace placeholder images with your actual app screenshots.</p>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ── DESIGN PORTFOLIO ── -->
+<section id="design">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Graphic Design</div> -->
+    <h2 class="section-title fi-anim">Design <em>Portfolio</em></h2>
+    <p class="design-intro fi-anim">A curated showcase of my graphic design work — logos, brand identities, social media creatives, and digital illustrations. Replace the placeholder image URLs with your own.</p>
+    <div class="filter-tabs fi-anim" id="filterTabs">
+      <button class="ftab active" data-filter="all">All Work</button>
+      <button class="ftab" data-filter="logo">Logos</button>
+      <button class="ftab" data-filter="brand">Branding</button>
+      <button class="ftab" data-filter="social">Social Media</button>
+      <button class="ftab" data-filter="ui">UI Mockups</button>
+      <button class="ftab" data-filter="other">Other</button>
+    </div>
+    <div class="design-gallery" id="designGallery">
+      <div class="gallery-item" data-cat="logo"><img src="https://placehold.co/400x300/8B5CF6/FFFFFF?text=Logo+1" alt="Logo 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Logo</span></div></div>
+      <div class="gallery-item" data-cat="brand"><img src="https://placehold.co/400x500/F43F5E/FFFFFF?text=Brand+1" alt="Brand 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Branding</span></div></div>
+      <div class="gallery-item" data-cat="social"><img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+1" alt="Social 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Social Media</span></div></div>
+      <div class="gallery-item" data-cat="ui"><img src="https://placehold.co/400x600/3B82F6/FFFFFF?text=UI+1" alt="UI 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">UI Mockup</span></div></div>
+      <div class="gallery-item" data-cat="logo"><img src="https://placehold.co/400x300/F59E0B/FFFFFF?text=Logo+2" alt="Logo 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Logo</span></div></div>
+      <div class="gallery-item" data-cat="other"><img src="https://placehold.co/400x450/8B5CF6/FFFFFF?text=Illustration" alt="Illustration" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Other</span></div></div>
+      <div class="gallery-item" data-cat="brand"><img src="https://placehold.co/400x350/F43F5E/FFFFFF?text=Brand+2" alt="Brand 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Branding</span></div></div>
+      <div class="gallery-item" data-cat="social"><img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+2" alt="Social 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Social Media</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <img id="lb-img" src="" alt="Design preview" />
+  </div>
+</div>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Academic Background</div> -->
+    <h2 class="section-title fi-anim">My <em>Education</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card fi-anim"><div class="edu-icon deg"><i class="fas fa-graduation-cap"></i></div><div><div class="edu-title">Bachelor of Computer Science</div><div class="edu-org">University of Malakand, KP, Pakistan</div><div class="edu-years">2022 – 2026</div></div></div>
+      <!-- <div class="edu-card fi-anim"><div class="edu-icon cert"><i class="fas fa-certificate"></i></div><div><div class="edu-title">Enrollment No: 1535</div><div class="edu-org">Department of Computer Science</div><div class="edu-years">FYP Supervisor: Dr. Muhammad Fayaz</div></div></div> -->
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-inner">
+    <!-- <div class="s-label fi-anim">Let's Connect</div> -->
+    <h2 class="section-title fi-anim">Get in <em>Touch</em></h2>
+    <div class="contact-grid">
+      <div class="contact-cards fi-anim">
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1rem;">Whether you have a Flutter project, a design brief, or just want to say hello — I'd love to hear from you.</p>
+        <div class="ccard"><div class="ccard-icon v"><i class="fas fa-envelope"></i></div><div><div class="ccard-label">Email</div><div class="ccard-val"><a href="mailto:ayesha@example.com">ayesha@example.com</a></div></div></div>
+        <!-- <div class="ccard"><div class="ccard-icon r"><i class="fas fa-phone"></i></div><div><div class="ccard-label">Phone</div><div class="ccard-val"><a href="tel:+92XXXXXXXXXX">+92 XXX XXXXXXX</a></div></div></div> -->
+        <div class="ccard"><div class="ccard-icon v"><i class="fas fa-map-marker-alt"></i></div><div><div class="ccard-label">Location</div><div class="ccard-val">Talash Disttrict Dir lower, KP, Pakistan</div></div></div>
+        <!-- <div class="ccard"><div class="ccard-icon r"><i class="fab fa-linkedin"></i></div><div><div class="ccard-label">LinkedIn</div><div class="ccard-val"><a href="#" target="_blank">linkedin.com/in/ayesha-ali</a></div></div></div> -->
+      </div>
+      <form class="contact-form fi-anim" onsubmit="handleForm(event)">
+        <div class="fg"><label>YOUR NAME</label><input type="text" required /></div>
+        <div class="fg"><label>EMAIL ADDRESS</label><input type="email" required /></div>
+        <div class="fg"><label>MESSAGE</label><textarea rows="4" required></textarea></div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+        <p id="form-status" style="font-size:0.8rem;color:var(--violet);display:none;">✓ Thanks! I'll get back to you soon.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Ayesha Ali</div>
+    <div class="footer-copy">© 2026 Ayesha Ali. All rights reserved.</div>
+    <div class="socials">
+      <a href="mailto:ayesha@example.com"><i class="fas fa-envelope"></i></a>
+      <!-- <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a> -->
+      <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav ── */
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  /* ── Active nav ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  function setActive() {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    navLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + cur) a.classList.add('active'); });
+  }
+  window.addEventListener('scroll', setActive);
+  window.addEventListener('load', setActive);
+
+  /* ── Fade-in ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fi-anim').forEach(el => obs.observe(el));
+
+  /* ── Filter tabs ── */
+  document.getElementById('filterTabs').addEventListener('click', (e) => {
+    if (e.target.classList.contains('ftab')) {
+      document.querySelectorAll('#filterTabs .ftab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      const filter = e.target.dataset.filter;
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'block' : 'none';
+      });
+    }
+  });
+
+  /* ── Lightbox ── */
+  document.querySelectorAll('.gallery-item img').forEach(img => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.getElementById('lb-img').src = img.src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── Contact form ── */
+  function handleForm(e) {
+    e.preventDefault();
+    const s = document.getElementById('form-status');
+    s.style.display = 'block';
+    e.target.reset();
+    setTimeout(() => s.style.display = 'none', 4000);
+    return false;
+  }
+</script>
+</body>
+</html>
