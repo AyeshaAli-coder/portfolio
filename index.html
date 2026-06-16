@@ -682,6 +682,78 @@
       .fyp-tags { margin: 0 1.5rem 1.5rem; padding: 1rem 0; }
       .fyp-screenshots { padding: 0 1.5rem 1.5rem; }
     }
+
+/* ── TYPING ANIMATION (Flexbox Version) ── */
+.typing-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  min-height: 3.5rem;
+  line-height: 1.3;
+}
+
+.typing-prefix {
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.typing-text {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(135deg, var(--rose), var(--violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.typing-text::after {
+  content: '|';
+  position: absolute;
+  right: -10px;
+  top: 0;
+  color: var(--violet);
+  -webkit-text-fill-color: var(--violet);
+  animation: blink 0.7s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .typing-container {
+    justify-content: center;
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    min-height: 3rem;
+  }
+  .typing-text {
+    white-space: normal;
+  }
+  .typing-prefix {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 540px) {
+  .typing-container {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    min-height: 2.5rem;
+  }
+  .typing-text::after {
+    right: -8px;
+  }
+}
   </style>
 </head>
 <body>
@@ -718,13 +790,14 @@
 <!-- ── HERO ── -->
 <section id="home">
   <div class="hero-left">
-    <!-- <div class="hero-eyebrow">CS Graduate & Creative Professional</div> -->
     <h1 class="hero-name">Ayesha<br><span class="grad">Ali</span></h1>
-    <div class="hero-role">
-      <span class="role-pill">Flutter Developer</span>
-      <span class="role-pill rose">Graphic Designer</span>
-      <!-- <span class="role-pill">Firebase</span> -->
+    
+    <!-- Big Typing Animation -->
+    <div class="typing-container">
+      <!-- <span class="typing-prefix">I am a </span> -->
+      <span class="typing-text" id="typing-text"></span>
     </div>
+
     <p class="hero-desc">A passionate Computer Science graduate who builds elegant mobile apps and crafts visually compelling designs, combining logic with creativity.</p>
     <div class="hero-btns">
       <a class="btn-grad" href="#fyp">View Tech Projects</a>
@@ -1019,6 +1092,52 @@
     setTimeout(() => s.style.display = 'none', 4000);
     return false;
   }
+
+ /* ── TYPING ANIMATION ── */
+document.addEventListener('DOMContentLoaded', function() {
+  const roles = [
+    'Flutter Developer',
+    'Graphic Designer',
+    'Mobile App Developer',
+    'Creative Thinker'
+  ];
+  
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  
+  const typingElement = document.getElementById('typing-text');
+  
+  function typeEffect() {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+      typingElement.textContent = currentRole.substring(0, charIndex - 1);
+      charIndex--;
+      typingSpeed = 40;
+    } else {
+      typingElement.textContent = currentRole.substring(0, charIndex + 1);
+      charIndex++;
+      typingSpeed = 80 + Math.random() * 40;
+    }
+    
+    if (!isDeleting && charIndex === currentRole.length) {
+      typingSpeed = 2500;
+      isDeleting = true;
+    }
+    
+    if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      typingSpeed = 600;
+    }
+    
+    setTimeout(typeEffect, typingSpeed);
+  }
+  
+  setTimeout(typeEffect, 800);
+});
 </script>
 </body>
 </html>
