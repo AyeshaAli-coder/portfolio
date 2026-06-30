@@ -798,6 +798,212 @@
     font-size: 1.6rem;
   }
 }
+
+/* ─── FYP SCREENSHOT LIGHTBOX ─── */
+.screenshot-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.screenshot-card img {
+  transition: transform 0.3s ease;
+}
+
+.screenshot-card:hover img {
+  transform: scale(1.03);
+}
+
+.screenshot-card .zoom-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.screenshot-card:hover .zoom-icon {
+  opacity: 1;
+}
+
+/* ─── SCREENSHOT LIGHTBOX ─── */
+.screenshot-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.screenshot-lightbox.open {
+  display: flex;
+}
+
+.screenshot-lb-inner {
+  position: relative;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screenshot-lb-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.screenshot-lb-content img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+.screenshot-lb-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+
+.screenshot-lb-close:hover {
+  opacity: 1;
+}
+
+.screenshot-lb-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+.screenshot-lb-prev,
+.screenshot-lb-next {
+  pointer-events: auto;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.screenshot-lb-prev:hover,
+.screenshot-lb-next:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
+}
+
+.screenshot-lb-prev {
+  margin-left: -60px;
+}
+
+.screenshot-lb-next {
+  margin-right: -60px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 640px) {
+  .screenshot-lb-prev {
+    margin-left: -30px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+  
+  .screenshot-lb-next {
+    margin-right: -30px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.9rem;
+  }
+  
+  .screenshot-lb-close {
+    top: -40px;
+    font-size: 1.4rem;
+  }
+  
+  .screenshot-lightbox {
+    padding: 1rem;
+  }
+  
+  .screenshot-lb-content img {
+    max-height: 75vh;
+  }
+}
+
+/* ─── GALLERY ZOOM INDICATOR ─── */
+.gallery-item {
+  position: relative;
+  cursor: pointer;
+}
+
+.gallery-item .zoom-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 5;
+}
+
+.gallery-item:hover .zoom-indicator {
+  opacity: 1;
+}
+
+.gallery-item img {
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -980,21 +1186,61 @@
       </div>
 
       <!-- Screenshots -->
-      <div class="fyp-screenshots">
-        <h4> App Screenshots</h4>
-        <div class="screenshot-grid">
-          <!-- Replace src with your actual image URLs --> 
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/8B5CF6/FFFFFF?text=Home" alt="Home" /><div class="caption">Home</div></div>
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/F43F5E/FFFFFF?text=Weather" alt="Weather" /><div class="caption">Weather</div></div>
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/10B981/FFFFFF?text=Events" alt="Events" /><div class="caption">Events</div></div>
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/F59E0B/FFFFFF?text=Add+Event" alt="Add Event" /><div class="caption">Add Event</div></div>
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/3B82F6/FFFFFF?text=Notifications" alt="Notifications" /><div class="caption">Notifications</div></div>
-          <div class="screenshot-card"><img src="https://placehold.co/200x356/8B5CF6/FFFFFF?text=Profile" alt="Profile" /><div class="caption">Profile</div></div>
-        <!-- </div>
-        <p style="font-size:0.75rem;color:var(--muted);margin-top:1rem;font-family:var(--mono);">Replace placeholder images with your actual app screenshots.</p>
-      </div> -->
+<div class="fyp-screenshots">
+<h4 style="margin-top: 1.5rem;">App Screenshots <span style="font-size:0.75rem;font-weight:400;color:var(--muted);font-family:var(--body);">(Click to enlarge)</span></h4>  <div class="screenshot-grid">
+    <!-- Replace src with your actual image URLs -->
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/SplashScreen.jpeg" alt="Splash Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Splash Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/welcome_screen.png" alt="Welcome Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Welcome Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/signup_screen.png" alt="Signup Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Signup Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/login_screen.png" alt="Login Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Login Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/homes_screen2.png" alt="Home Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Home Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/weatherdetails_screen.png" alt="Weather Detail Screen" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Weather Detail Screen</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/create_event.png" alt="Add Event" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Add Event</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/notifcation_display.png" alt="Notifications" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Notifications</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/drawerscreen.png" alt="Drawer" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Drawer</div>
+    </div>
+    <div class="screenshot-card" onclick="openScreenshotLightbox(this)">
+      <img src="images/fyp/weather_map.png" alt="Weather Map" />
+      <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
+      <div class="caption">Weather Map</div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- ── DESIGN PORTFOLIO ── -->
@@ -1012,16 +1258,47 @@
       <button class="ftab" data-filter="other">Other</button>
     </div>
     <div class="design-gallery" id="designGallery">
-      <div class="gallery-item" data-cat="logo"><img src="https://placehold.co/400x300/8B5CF6/FFFFFF?text=Logo+1" alt="Logo 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Logo</span></div></div>
-      <div class="gallery-item" data-cat="brand"><img src="https://placehold.co/400x500/F43F5E/FFFFFF?text=Brand+1" alt="Brand 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Branding</span></div></div>
-      <div class="gallery-item" data-cat="social"><img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+1" alt="Social 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Social Media</span></div></div>
-      <div class="gallery-item" data-cat="ui"><img src="https://placehold.co/400x600/3B82F6/FFFFFF?text=UI+1" alt="UI 1" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">UI Mockup</span></div></div>
-      <div class="gallery-item" data-cat="logo"><img src="https://placehold.co/400x300/F59E0B/FFFFFF?text=Logo+2" alt="Logo 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Logo</span></div></div>
-      <div class="gallery-item" data-cat="other"><img src="https://placehold.co/400x450/8B5CF6/FFFFFF?text=Illustration" alt="Illustration" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Other</span></div></div>
-      <div class="gallery-item" data-cat="brand"><img src="https://placehold.co/400x350/F43F5E/FFFFFF?text=Brand+2" alt="Brand 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Branding</span></div></div>
-      <div class="gallery-item" data-cat="social"><img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+2" alt="Social 2" loading="lazy" /><div class="gallery-overlay"><span class="gallery-label">Social Media</span></div></div>
-    </div>
+  <div class="gallery-item" data-cat="logo">
+    <img src="images/design/profile.jpg" alt="Logo 1" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Logo</span></div>
   </div>
+  <div class="gallery-item" data-cat="brand">
+    <img src="https://placehold.co/400x500/F43F5E/FFFFFF?text=Brand+1" alt="Brand 1" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Branding</span></div>
+  </div>
+  <div class="gallery-item" data-cat="social">
+    <img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+1" alt="Social 1" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Social Media</span></div>
+  </div>
+  <div class="gallery-item" data-cat="ui">
+    <img src="https://placehold.co/400x600/3B82F6/FFFFFF?text=UI+1" alt="UI 1" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">UI Mockup</span></div>
+  </div>
+  <div class="gallery-item" data-cat="logo">
+    <img src="https://placehold.co/400x300/F59E0B/FFFFFF?text=Logo+2" alt="Logo 2" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Logo</span></div>
+  </div>
+  <div class="gallery-item" data-cat="other">
+    <img src="https://placehold.co/400x450/8B5CF6/FFFFFF?text=Illustration" alt="Illustration" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Other</span></div>
+  </div>
+  <div class="gallery-item" data-cat="brand">
+    <img src="https://placehold.co/400x350/F43F5E/FFFFFF?text=Brand+2" alt="Brand 2" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Branding</span></div>
+  </div>
+  <div class="gallery-item" data-cat="social">
+    <img src="https://placehold.co/400x400/10B981/FFFFFF?text=Social+2" alt="Social 2" loading="lazy" />
+    <div class="zoom-indicator"><i class="fas fa-search-plus"></i></div>
+    <div class="gallery-overlay"><span class="gallery-label">Social Media</span></div>
+  </div>
+</div>
 </section>
 
 <!-- ── LIGHTBOX ── -->
@@ -1029,6 +1306,7 @@
   <div class="lb-inner">
     <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
     <img id="lb-img" src="" alt="Design preview" />
+    <p id="lb-caption" style="color:white;text-align:center;margin-top:1rem;font-family:var(--body);font-size:0.85rem;opacity:0.8;"></p>
   </div>
 </div>
 
@@ -1116,17 +1394,41 @@
     }
   });
 
-  /* ── Lightbox ── */
-  document.querySelectorAll('.gallery-item img').forEach(img => {
-    img.addEventListener('click', (e) => {
-      e.stopPropagation();
-      document.getElementById('lb-img').src = img.src;
-      document.getElementById('lightbox').classList.add('open');
-    });
+/* ─── LIGHTBOX FOR DESIGN PORTFOLIO ─── */
+// Open lightbox when clicking anywhere on a gallery item (image, overlay, or zoom icon)
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const img = this.querySelector('img');
+    const label = this.querySelector('.gallery-label')?.textContent || 'Design';
+    openDesignLightbox(img.src, label);
   });
-  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+});
+function openDesignLightbox(src, label) {
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  
+  lbImg.src = src;
+  lbCaption.textContent = label || 'Design Preview';
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Close lightbox by clicking outside the image
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
   /* ── Contact form ── */
   function handleForm(e) {
     e.preventDefault();
@@ -1182,6 +1484,100 @@ document.addEventListener('DOMContentLoaded', function() {
   
   setTimeout(typeEffect, 800);
 });
+
+/* ─── FYP SCREENSHOT LIGHTBOX ─── */
+function openScreenshotLightbox(element) {
+  const img = element.querySelector('img');
+  const caption = element.querySelector('.caption')?.textContent || 'Screenshot';
+  
+  // Get the existing lightbox or create one
+  let lightbox = document.getElementById('screenshotLightbox');
+  
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.id = 'screenshotLightbox';
+    lightbox.className = 'screenshot-lightbox';
+    lightbox.innerHTML = `
+      <div class="screenshot-lb-inner">
+        <button class="screenshot-lb-close" onclick="closeScreenshotLightbox()">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="screenshot-lb-content">
+          <img id="screenshotLbImg" src="" alt="Screenshot" />
+          <p id="screenshotLbCaption" style="color:white;text-align:center;margin-top:1rem;font-family:var(--body);font-size:0.9rem;"></p>
+        </div>
+        <div class="screenshot-lb-nav">
+          <button class="screenshot-lb-prev" onclick="prevScreenshot()"><i class="fas fa-chevron-left"></i></button>
+          <button class="screenshot-lb-next" onclick="nextScreenshot()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+    
+    // Close on background click
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === this) closeScreenshotLightbox();
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeScreenshotLightbox();
+    });
+  }
+  
+  // Store all screenshot cards for navigation
+  const allCards = document.querySelectorAll('.screenshot-card');
+  window._screenshotCards = allCards;
+  window._currentIndex = Array.from(allCards).indexOf(element);
+  
+  // Show the image
+  document.getElementById('screenshotLbImg').src = img.src;
+  document.getElementById('screenshotLbImg').alt = img.alt || 'Screenshot';
+  document.getElementById('screenshotLbCaption').textContent = caption;
+  
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeScreenshotLightbox() {
+  const lightbox = document.getElementById('screenshotLightbox');
+  if (lightbox) lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function prevScreenshot() {
+  const cards = window._screenshotCards || [];
+  if (cards.length === 0) return;
+  
+  let index = window._currentIndex || 0;
+  index = (index - 1 + cards.length) % cards.length;
+  window._currentIndex = index;
+  
+  const element = cards[index];
+  const img = element.querySelector('img');
+  const caption = element.querySelector('.caption')?.textContent || 'Screenshot';
+  
+  document.getElementById('screenshotLbImg').src = img.src;
+  document.getElementById('screenshotLbImg').alt = img.alt || 'Screenshot';
+  document.getElementById('screenshotLbCaption').textContent = caption;
+}
+
+function nextScreenshot() {
+  const cards = window._screenshotCards || [];
+  if (cards.length === 0) return;
+  
+  let index = window._currentIndex || 0;
+  index = (index + 1) % cards.length;
+  window._currentIndex = index;
+  
+  const element = cards[index];
+  const img = element.querySelector('img');
+  const caption = element.querySelector('.caption')?.textContent || 'Screenshot';
+  
+  document.getElementById('screenshotLbImg').src = img.src;
+  document.getElementById('screenshotLbImg').alt = img.alt || 'Screenshot';
+  document.getElementById('screenshotLbCaption').textContent = caption;
+}
 </script>
 </body>
 </html>
