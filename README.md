@@ -1,122 +1,117 @@
-# portfolio
-# Ayesha Ali — Developer & Designer Portfolio
+# Ayesha Ali — Portfolio Website
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-8B5CF6?style=for-the-badge&logo=github&logoColor=white)](https://yourusername.github.io/portfolio)
-[![License](https://img.shields.io/badge/License-MIT-8B5CF6?style=for-the-badge)](LICENSE)
+A personal portfolio website for **Ayesha Ali**, a Computer Science graduate, Flutter developer, and graphic designer. The site showcases technical projects, design work, skills, education, and contact information in a single responsive page.
 
-A modern, responsive portfolio website showcasing Ayesha Ali's work as a Flutter Developer and Graphic Designer. Built with pure HTML, CSS, and JavaScript.
+🔗 **Live Site:** _add your GitHub Pages / hosting link here_
+
+---
 
 ## ✨ Features
 
-- 🎨 **Modern Design** — Clean, feminine aesthetic with gradient accents
-- 📱 **Fully Responsive** — Optimized for desktop, tablet, and mobile
-- ⌨️ **Typing Animation** — Dynamic role display in the hero section
-- 🖼️ **Image Lightbox** — Full-screen image viewer with navigation
-- 🏷️ **Filterable Gallery** — Sort design work by category
-- 📋 **Interactive UI** — Smooth scroll, fade-in animations, and hover effects
-- 📧 **Contact Form** — Ready for integration with Formspree or Netlify Forms
+- **Responsive single-page design** — works smoothly on desktop, tablet, and mobile
+- **Animated hero section** with a typing effect that cycles through roles (Flutter Developer, Graphic Designer, etc.)
+- **About section** with bio, tags, and personal info cards
+- **Skills section** organized by category (Mobile Development, Backend & Cloud, Graphic Design, Programming, UI/UX, Tools)
+- **Experience timeline**
+- **Final Year Project showcase** — dedicated section for the *Weather & Events Alert App* with feature list, tech stack, and a clickable screenshot gallery (with lightbox + prev/next navigation)
+- **Design portfolio gallery** — filterable by category (Logos, Branding, Social Media, UI Mockups, Other) with a click-to-enlarge lightbox
+- **Education section**
+- **Contact section** with a simple contact form (front-end only, no backend submission yet)
+- **Smooth scroll navigation** with active-link highlighting and a mobile hamburger menu
+- **Scroll-triggered fade-in animations**
 
-## 🚀 Tech Stack
+---
 
-- HTML5
-- CSS3 (Custom properties, animations, flexbox, grid)
-- JavaScript (DOM manipulation, event handling)
-- Font Awesome
-- Google Fonts (Playfair Display, Inter, DM Mono)
+## 🛠️ Built With
+
+- **HTML5** & **CSS3** (custom properties / CSS variables for theming)
+- **Vanilla JavaScript** (no frameworks) — handles navigation, lightboxes, filtering, typing animation, and form interaction
+- **[Font Awesome](https://fontawesome.com/)** — icons
+- **[Google Fonts](https://fonts.google.com/)** — Playfair Display, Inter, DM Mono
+
+---
 
 ## 📁 Project Structure
-portfolio/
+
+```
+.
 ├── index.html
 ├── README.md
-├── images/
-│ ├── avatar/
-│ │ └── profile.jpg
-│ ├── design/
-│ │ └── profile.jpg
-│ └── fyp/
-│ ├── SplashScreen.jpeg
-│ ├── welcome_screen.png
-│ ├── signup_screen.png
-│ ├── login_screen.png
-│ ├── homes_screen2.png
-│ ├── weatherdetails_screen.png
-│ ├── create_event.png
-│ ├── notifcation_display.png
-│ ├── drawerscreen.png
-│ └── weather_map.png
-└── img/
-└── favicon.png
+└── images/
+    ├── avatar/
+    │   └── profile.jpg
+    ├── fyp/
+    │   ├── SplashScreen.jpeg
+    │   ├── welcome_screen.png
+    │   ├── signup_screen.png
+    │   ├── login_screen.png
+    │   ├── homes_screen2.png
+    │   ├── weatherdetails_screen.png
+    │   ├── create_event.png
+    │   ├── notifcation_display.png
+    │   ├── drawerscreen.png
+    │   └── weather_map.png
+    └── design/
+        └── profile.jpg   # replace with real design portfolio images
+```
 
-text
+> **Note:** Some design portfolio images currently use [placehold.co](https://placehold.co) placeholder URLs. Replace these with real image files in `images/design/` before publishing.
 
-## 🛠️ Installation & Setup
+---
 
-1. **Clone the repository**
+## 🚀 Getting Started
+
+### View locally
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/portfolio.git
-   cd portfolio
-Open in browser
+   git clone https://github.com/<your-username>/<repo-name>.git
+   ```
+2. Open `index.html` directly in your browser, or serve it with a simple local server:
+   ```bash
+   python -m http.server 8000
+   ```
+3. Visit `http://localhost:8000` in your browser.
 
-bash
-open index.html
-# OR use Live Server in VS Code
-Make it your own
+### Deploy with GitHub Pages
+1. Push your code (including the `images/` folder) to GitHub.
+2. Go to your repo → **Settings → Pages**.
+3. Under **Source**, select the branch (e.g. `main`) and root folder (`/`).
+4. Save — your site will be live at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
 
-Replace images in images/ folder
+---
 
-Update personal information in index.html
+## 🖼️ Adding / Replacing Images
 
-Modify colors in CSS :root variables
+Image paths in `index.html` are relative, e.g.:
 
-GitHub Pages Deployment
-Push to GitHub
+```html
+<img src="images/fyp/SplashScreen.jpeg" alt="Splash Screen" />
+```
 
-Go to Settings → Pages
+To add or replace an image:
+1. Upload the file to the matching folder in `images/` (via GitHub web UI: **Add file → Upload files**, or `git add` + `git push`).
+2. Make sure the **file name and extension match exactly** (case-sensitive) what's referenced in `index.html`.
+3. Commit your changes — GitHub Pages will rebuild automatically.
 
-Select main branch as source
+---
 
-Visit https://yourusername.github.io/portfolio
+## ✏️ Customization
 
-🎨 Customization
-Colors
-Update in CSS :root:
+- **Personal info:** update name, email, location, and degree in the `#about` and `#contact` sections.
+- **Skills/Tags:** edit the `<span class="tag">` and `<span class="stag">` elements.
+- **Projects:** duplicate the `#fyp` section structure to add more projects.
+- **Design gallery:** add new `<div class="gallery-item" data-cat="...">` blocks inside `#designGallery`, matching one of the existing filter categories (`logo`, `brand`, `social`, `ui`, `other`).
+- **Colors/Theme:** adjust the CSS variables at the top of the `<style>` block (`--rose`, `--violet`, `--ink`, etc.) to change the color palette.
 
-css
---rose: #F43F5E;     /* Primary accent */
---violet: #8B5CF6;   /* Secondary accent */
---ink: #1E1B2E;      /* Text color */
-Images
-Profile: images/avatar/profile.jpg (300x300px)
+---
 
-FYP Screenshots: images/fyp/ (9:16 ratio)
+## 📬 Contact
 
-Design Portfolio: images/design/ (various sizes)
+- **Email:** 
+- **Location:** District Dir Lower, Khyber Pakhtunkhwa, Pakistan
 
-🔧 Configuration
-Contact Form
-Replace YOUR_FORM_ID in:
+---
 
-html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-Social Links
-Update in footer:
+## 📄 License
 
-html
-<a href="mailto:youremail@example.com">Email</a>
-<a href="https://github.com/yourusername">GitHub</a>
-<a href="https://behance.net/yourusername">Behance</a>
-📱 Responsive Breakpoints
-Desktop: > 860px
-
-Tablet: 540px - 860px
-
-Mobile: < 540px
-
-👤 Author
-Ayesha Ali
-
-Email: ayesha@example.com
-
-GitHub: @yourusername
-
-Behance: @yourusername
+This project is open for personal use and customization. Feel free to fork it and adapt it for your own portfolio.
