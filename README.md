@@ -2,7 +2,7 @@
 
 A personal portfolio website for **Ayesha Ali**, a Computer Science graduate, Flutter developer, and graphic designer. The site showcases technical projects, design work, skills, education, and contact information in a single responsive page.
 
-🔗 **Live Site:** _add your GitHub Pages / hosting link here_
+🔗 **Live Site:** https://ayeshaali-coder.github.io/portfolio/
 
 ---
 
@@ -44,13 +44,6 @@ A personal portfolio website for **Ayesha Ali**, a Computer Science graduate, Fl
     │   ├── SplashScreen.jpeg
     │   ├── welcome_screen.png
     │   ├── signup_screen.png
-    │   ├── login_screen.png
-    │   ├── homes_screen2.png
-    │   ├── weatherdetails_screen.png
-    │   ├── create_event.png
-    │   ├── notifcation_display.png
-    │   ├── drawerscreen.png
-    │   └── weather_map.png
     └── design/
         └── profile.jpg   # replace with real design portfolio images
 ```
@@ -64,7 +57,7 @@ A personal portfolio website for **Ayesha Ali**, a Computer Science graduate, Fl
 ### View locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/<repo-name>.git
+   git clone https://github.com/AyeshaAli-coder/portfolio.git
    ```
 2. Open `index.html` directly in your browser, or serve it with a simple local server:
    ```bash
